@@ -1,6 +1,6 @@
 <img
   src="https://kubernetes.io/images/kubernetes-horizontal-color.png"
-  width="200"
+  width="300"
   align="right"
 />
 
