@@ -10,11 +10,12 @@
 ## Table of Contents
 * [Kubernetes Concepts](#kubernetes-concepts)
 * [Online Courses](#online-courses)
+* [Youtube](#youtube)
 * [Resources](#resources)
 
 
 ## Kubernetes Concepts
-The following section is an extract from the (Standardized Glossary](https://kubernetes.io/docs/reference/glossary/?all=true) of the Kubernetes documentation.
+The following section is an extract from the [Standardized Glossary](https://kubernetes.io/docs/reference/glossary/?all=true) of the Kubernetes documentation.
 
 #### CronJob
 Manages a Job that runs on a periodic schedule. Similar to a line in a crontab file, a CronJob object specifies a schedule using the cron format.
