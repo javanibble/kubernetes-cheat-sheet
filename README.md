@@ -16,5 +16,17 @@
 ## Kubernetes Concepts
 
 
+#### Secrets
+Secrets stores sensitive information, such as passwords, OAuth tokens, and ssh keys.
+
 ## Online Courses
+
+### A Cloud Guru
+* [Kubernetes Deep Dive][acloudguru_course_kubernetes_deep_dive]
+
+
+
+
+
+[acloudguru_course_kubernetes_deep_dive](https://acloudguru.com/course/kubernetes-deep-dive)
 
