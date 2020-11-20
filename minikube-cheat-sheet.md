@@ -14,7 +14,7 @@ minikube quickly sets up a local Kubernetes cluster on macOS, Linux, and Windows
 * `minikube start` - Starts a local Kubernetes cluster ([Reference](https://minikube.sigs.k8s.io/docs/commands/start/))
 * `minikube status` - Gets the status of a local Kubernetes cluster ([Reference](https://minikube.sigs.k8s.io/docs/commands/status/))
 * `minikube stop` - Stops a running local Kubernetes cluster ([Reference](https://minikube.sigs.k8s.io/docs/commands/stop/))
-* `minikube delete` - Deletes a local Kubernetes cluster ([Reference](https://minikube.sigs.k8s.io/docs/commands/delete/))
+* [`minikube delete`](#minikube-delete) - Deletes a local Kubernetes cluster ([Reference](https://minikube.sigs.k8s.io/docs/commands/delete/))
 * `minikube dashboard` - Access the Kubernetes dashboard running within the minikube cluster ([Reference](https://minikube.sigs.k8s.io/docs/commands/dashboard/))
 * `minikube pause` - Pause Kubernetes ([Reference](https://minikube.sigs.k8s.io/docs/commands/pause/))
 * `minikube unpause` - Unpause Kubernetes ([Reference](https://minikube.sigs.k8s.io/docs/commands/unpause/))
