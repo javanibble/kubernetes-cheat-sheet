@@ -3,8 +3,8 @@ minikube quickly sets up a local Kubernetes cluster on macOS, Linux, and Windows
 
 
 ## Table of Contents
-
 * [Minikube Commands](#minikube-commands)
+* [Minikube Tutorials](#minikube-tutorials)
 * [Resources](#resources)
 
 ## Minikube Commands
@@ -54,12 +54,34 @@ minikube quickly sets up a local Kubernetes cluster on macOS, Linux, and Windows
 
 
 ### Minikube Command Examples
-#### minikube version  
 
+#### minikube delete  
+
+```shell
+# Deletes a local Kubernetes cluster
+$ minikube delete
+
+# Deletes a local Kubernetes cluster & delete all profiles
+$ minikube delete --all
+
+# Deletes a local Kubernetes cluster & delete the '.minikube' folder from your user directory.
+$ minikube delete --purge
+```
+
+#### minikube version  
 ```shell
 # Print the version 
 $ minikube version
 ```
+
+## Minikube Tutorials
+### Minikube Basic Startup
+
+
+```shell
+$ minikube start
+```
+
 
 ## Resources
 * [Youtube - Minikube Intro](https://www.youtube.com/watch?v=4x0CZmF_U5o)
