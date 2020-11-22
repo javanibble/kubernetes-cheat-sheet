@@ -13,11 +13,11 @@ minikube quickly sets up a local Kubernetes cluster on macOS, Linux, and Windows
 **Basic Commands:**
 * [`minikube start`](#minikube-start) - Starts a local Kubernetes cluster ([Reference](https://minikube.sigs.k8s.io/docs/commands/start/))
 * [`minikube status`](#minikube-status) - Gets the status of a local Kubernetes cluster ([Reference](https://minikube.sigs.k8s.io/docs/commands/status/))
-* `minikube stop` - Stops a running local Kubernetes cluster ([Reference](https://minikube.sigs.k8s.io/docs/commands/stop/))
+* [`minikube stop`](#minikube-stop) - Stops a running local Kubernetes cluster ([Reference](https://minikube.sigs.k8s.io/docs/commands/stop/))
 * [`minikube delete`](#minikube-delete) - Deletes a local Kubernetes cluster ([Reference](https://minikube.sigs.k8s.io/docs/commands/delete/))
-* `minikube dashboard` - Access the Kubernetes dashboard running within the minikube cluster ([Reference](https://minikube.sigs.k8s.io/docs/commands/dashboard/))
-* `minikube pause` - Pause Kubernetes ([Reference](https://minikube.sigs.k8s.io/docs/commands/pause/))
-* `minikube unpause` - Unpause Kubernetes ([Reference](https://minikube.sigs.k8s.io/docs/commands/unpause/))
+* [`minikube dashboard`](#minikube-dashboard) - Access the Kubernetes dashboard running within the minikube cluster ([Reference](https://minikube.sigs.k8s.io/docs/commands/dashboard/))
+* [`minikube pause`](#minikube-pause) - Pause Kubernetes ([Reference](https://minikube.sigs.k8s.io/docs/commands/pause/))
+* [`minikube unpause`](#minikube-unpause) - Unpause Kubernetes ([Reference](https://minikube.sigs.k8s.io/docs/commands/unpause/))
 
 **Images Commands:**
 * `minikube docker-env` - Configure environment to use minikube's Docker daemon ([Reference](https://minikube.sigs.k8s.io/docs/commands/docker-env/))
@@ -73,6 +73,15 @@ $ minikube cache reload nginx:latest
 $ minikube cache delete nginx:latest
 ```
 
+#### minikube dashboard
+```shell
+# Access the Kubernetes dashboard running within the minikube cluster
+$ minikube dashboard
+
+# Display dashboard URL instead of opening a browser
+$ minikube dashboard --url
+```
+
 #### minikube delete  
 ```shell
 # Deletes a local Kubernetes cluster
@@ -100,6 +109,12 @@ $ minikube logs
 $ minikube logs -f
 ```
 
+#### minikube pause
+```shell
+# Pause the Kubernetes cluster
+$ minikube pause
+```
+
 #### minikube service
 ```shell
 # List the kubernetes URLs for the services in the local cluster. This is the same as `kubectl get svc -A`
@@ -121,6 +136,18 @@ $  minikube start --vm-driver=hyperkit
 ```shell
 # Gets the status of a local Kubernetes cluster.
 $ minikube status
+```
+
+#### minikube stop
+```shell
+# Stops a local Kubernetes cluster. This command stops the underlying VM or container, but keeps user data intact.
+$ minikube stop
+```
+
+#### minikube unpause
+```shell
+# Unpause the Kubernetes cluster
+$ minikube unpause
 ```
 
 #### minikube update-check
