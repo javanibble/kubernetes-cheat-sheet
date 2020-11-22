@@ -1,3 +1,9 @@
+<img
+  src="https://miro.medium.com/max/400/0*KzqL3xqmXzV5PPjX.png"
+  width="300"
+  align="right"
+/>
+
 # Minikube 
 minikube quickly sets up a local Kubernetes cluster on macOS, Linux, and Windows. 
 
@@ -55,6 +61,25 @@ minikube quickly sets up a local Kubernetes cluster on macOS, Linux, and Windows
 
 ### Minikube Command Examples
 
+
+#### minikube addons
+
+```shell
+# Lists all available minikube addons as well as their current statuses
+$ minikube addons list
+
+# Disables the addon `dashboard` within minikube.
+$ minikube addons disable dashboard
+
+# Enables the addon `dashboard` within minikube.
+$ minikube addons enable dashboard
+
+# Enables the addon `metrics-server` within minikube.
+$ minikube addons enable metrics-server
+
+# Open the dashboard addon in a browser, since it exposes a browser endpoint.
+$ minikube addons open dashboard
+```
 
 #### minikube cache  
 Add, delete, or push a local image into minikube. See the `~/.minikube/cache/images` directory.
@@ -127,9 +152,13 @@ $ minikube service list
 $ minikube start
 
 # Starts a local Kubernetes cluster with a profile name allowing multiple instances of minikube independently. (default "minikube")
-$ minikube start --profile <name>
+$ minikube start --profile my-profile-name
 
-$  minikube start --vm-driver=hyperkit
+# Starts a local kubernetes cluster and enable the metrics-server and dashboard addons at start-up.
+$ minikube start --addons metrics-server --addons dashboard
+
+# Starts a local kubernetes cluster with one of the drivers: virtualbox, parallels, vmwarefusion, hyperkit, vmware, docker, podman (experimental) (defaults to auto-detect)
+$ minikube start --driver='hyperkit'
 ```
 
 #### minikube status
@@ -175,41 +204,31 @@ $ minikube version --output='json'
 ```shell
 $ minikube start
 $ minikube status
-$ kubectl get po -A
 $ ps -Af | grep hyperkit
-$ kubectl version
+$ kubectl get po -A
 $ kubectl get pods --all-namespaces
+
 // Create a deployment
-$ kubectl create deployment --image nginx my-nginx
-$ kubectl create deployment --image nginx:latest my-nginx
-$ kubectl expose deployment my-nginx --port=80 --type=NodePort
+$ kubectl create deployment my-first-minikube --image=k8s.gcr.io/echoserver:1.4
+$ kubectl get deployment 
+$ kubectl edit deployment my-first-minikube
+$ kubectl expose deployment my-first-minikube --type=LoadBalancer --port=8080
+$ kubectl edit svc my-first-minikube
 $ kubectl get svc
+
 $ minikube ip
-$ curl <ip>:<ip>
+$ curl <ip>:<port>
+
 // Remove deployment
-$ kubectl delete svc my-nginx
-$ kubectl delete deployment my-nginx
+$ kubectl delete svc my-first-minikube
+$ kubectl delete deployment my-first-minikube
 $ minikube stop
 $ minikube delete
 $ ps -Af | grep hyperkit
 $ ps -ax | grep hyperkit
 ```
 
-
-
-
-
-
-
-
-/Driver VirtualBox
-$ ps -ax | grep VB
-$  minikube start --vm-driver=hyperkit
-// Driver Hyperkit
-$ ps -Af | grep hyperkit
-
-
-
-
 ## Resources
+* [Minikube GitHub Repository](https://github.com/kubernetes/minikube)
 * [Youtube - Minikube Intro](https://www.youtube.com/watch?v=4x0CZmF_U5o)
+* [A Cloud Guru - Minikube in the cloud on Ubuntu](https://acloudguru.com/course/minikube-in-the-cloud-on-ubuntu)
