@@ -22,7 +22,7 @@ minikube quickly sets up a local Kubernetes cluster on macOS, Linux, and Windows
 **Images Commands:**
 * `minikube docker-env` - Configure environment to use minikube's Docker daemon ([Reference](https://minikube.sigs.k8s.io/docs/commands/docker-env/))
 * `minikube podman-env` - Configure environment to use minikube's Podman service ([Reference]())
-* `minikube cache` - Add, delete, or push a local image into minikube ([Reference](https://minikube.sigs.k8s.io/docs/commands/cache/))
+* [`minikube cache`](#minikube-cache ) - Add, delete, or push a local image into minikube ([Reference](https://minikube.sigs.k8s.io/docs/commands/cache/))
 
 **Configuration and Management Commands:**
 * `minikube addons` - Enable or disable a minikube addon ([Reference](https://minikube.sigs.k8s.io/docs/commands/addons/))
@@ -42,9 +42,9 @@ minikube quickly sets up a local Kubernetes cluster on macOS, Linux, and Windows
 
 **Troubleshooting Commands:**
 * `minikube ssh-key` - Retrieve the ssh identity key path of the specified cluster ([Reference](https://minikube.sigs.k8s.io/docs/commands/ssh-key/))
-* `minikube ip` - Retrieves the IP address of the running cluster ([Reference](https://minikube.sigs.k8s.io/docs/commands/ip/))
+* [`minikube ip`](#minikube-ip) - Retrieves the IP address of the running cluster ([Reference](https://minikube.sigs.k8s.io/docs/commands/ip/))
 * `minikube logs` - Returns logs to debug a local Kubernetes cluster ([Reference](https://minikube.sigs.k8s.io/docs/commands/logs/))
-* `minikube update-check` - Print current and latest version number ([Reference](https://minikube.sigs.k8s.io/docs/commands/update-check/))
+* [`minikube update-check`](#minikube-update-check) - Print current and latest version number ([Reference](https://minikube.sigs.k8s.io/docs/commands/update-check/))
 * [`minikube version`](#minikube-version) - Print the version of minikube ([Reference](https://minikube.sigs.k8s.io/docs/commands/version/))
 
 **Other Commands:**
@@ -55,8 +55,25 @@ minikube quickly sets up a local Kubernetes cluster on macOS, Linux, and Windows
 
 ### Minikube Command Examples
 
-#### minikube delete  
 
+#### minikube cache  
+Add, delete, or push a local image into minikube. See the `~/.minikube/cache/images` directory.
+
+```shell
+# List all the available images from the local cache.
+$ minikube cache list
+
+# Add the latest version of the nginx image to the local cache.
+$ minikube cache add nginx:latest
+
+# Reload the latest version of the nginx image to the local cache.
+$ minikube cache reload nginx:latest
+
+# Delete the latest vesrion of the nginx image from the local cache.
+$ minikube cache delete nginx:latest
+```
+
+#### minikube delete  
 ```shell
 # Deletes a local Kubernetes cluster
 $ minikube delete
@@ -68,10 +85,55 @@ $ minikube delete --all
 $ minikube delete --purge
 ```
 
+#### minikube ip
+```shell
+# Retrieves the IP address of the running cluster, and writes it to STDOUT.
+$ minikube ip
+```
+
+#### minikube logs
+```shell
+# Gets the logs of the running instance, used for debugging minikube, not user code.
+$ minikube logs
+
+# Display the logs of the running instance and continously print new entries
+$ minikube logs -f
+```
+
+#### minikube service
+```shell
+# List the kubernetes URLs for the services in the local cluster. This is the same as `kubectl get svc -A`
+$ minikube service list
+```
+
+#### minikube start  
+```shell
+# Starts a local Kubernetes cluster 
+$ minikube start
+
+# Starts a local Kubernetes cluster with a profile name allowing multiple instances of minikube independently. (default "minikube")
+$ minikube start --profile <name>
+
+$  minikube start --vm-driver=hyperkit
+
+```
+
+#### minikube update-check
+```shell
+# Print current and latest version number of minikube
+$ minikube update-check
+```
+
 #### minikube version  
 ```shell
-# Print the version 
+# Print the version of minikube
 $ minikube version
+
+# Print the version of minikube in yaml format
+$ minikube version --output='yaml'
+
+# Print the version of minikube in json format
+$ minikube version --output='json'
 ```
 
 ## Minikube Tutorials
@@ -80,7 +142,41 @@ $ minikube version
 
 ```shell
 $ minikube start
+$ minikube status
+$ kubectl get po -A
+$ ps -Af | grep hyperkit
+$ kubectl version
+$ kubectl get pods --all-namespaces
+// Create a deployment
+$ kubectl create deployment --image nginx my-nginx
+$ kubectl create deployment --image nginx:latest my-nginx
+$ kubectl expose deployment my-nginx --port=80 --type=NodePort
+$ kubectl get svc
+$ minikube ip
+$ curl <ip>:<ip>
+// Remove deployment
+$ kubectl delete svc my-nginx
+$ kubectl delete deployment my-nginx
+$ minikube stop
+$ minikube delete
+$ ps -Af | grep hyperkit
+$ ps -ax | grep hyperkit
 ```
+
+
+
+
+
+
+
+
+/Driver VirtualBox
+$ ps -ax | grep VB
+$  minikube start --vm-driver=hyperkit
+// Driver Hyperkit
+$ ps -Af | grep hyperkit
+
+
 
 
 ## Resources
