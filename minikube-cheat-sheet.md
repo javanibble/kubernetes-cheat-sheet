@@ -1,6 +1,6 @@
 <img
   src="https://miro.medium.com/max/400/0*KzqL3xqmXzV5PPjX.png"
-  width="300"
+  width="150"
   align="right"
 />
 
