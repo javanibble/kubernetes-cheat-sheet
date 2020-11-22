@@ -5,13 +5,27 @@
 />
 
 # Minikube 
-minikube quickly sets up a local Kubernetes cluster on macOS, Linux, and Windows. 
+minikube quickly sets up a local Kubernetes cluster on macOS, Linux, and Windows. A production kubernetes kluster setup consists of multiple master and worker nodes on separate virtual or physical machines. Minikube allows you to run a single-node kubernetes cluster on your machine. Both the master and worker processes are running on the single node. The docker runtime environment is pre-installed in the node.
 
+Minikube support kubernetes features that makes sense locally like, DNS, NodePorts, PersistentVolumes, Ingress, ConfigMaps & Secrets, Dashboards, Container runtime (docker, rkt, CRI-O), enabling CNI (Container Network Interface) and loadbalancer.
+
+Minikube has a number of custom addons that can easily be enabled vi the command line. The addons are for example, dashboard, ingress, heapster, prometheus, registry-creds, etc..
+
+Minikube is configurable via the config.json file, environment variables and flags. The $MINIKUBE_HOME resolves to the `~/.minikube` folder and contains all the minikube configuration and cached minikube artifacts. Configuration files can be mounted on the minikube node via `~/.minikube/files/home/config.yaml -> /home/config.yaml`. The minikube deployment files in `~/.minikube/addons/deployment.yaml` can be used to run custom kubernetes resources everytime minikube starts.
+
+This cheatsheet is based on minikube version: **v1.15.1**
 
 ## Table of Contents
+* [Installation](#installation)
 * [Minikube Commands](#minikube-commands)
 * [Minikube Tutorials](#minikube-tutorials)
 * [Resources](#resources)
+
+
+## Installation
+The following links contain guides on how to install minikube on your machine:
+* [JavaNibble: How to install minikube on macOS using Homebrew](https://www.javanibble.com/how-to-install-minikube-on-macos-using-homebrew/)
+* [Minikube Installation](https://minikube.sigs.k8s.io/docs/start/)
 
 ## Minikube Commands
 
@@ -159,6 +173,18 @@ $ minikube start --addons metrics-server --addons dashboard
 
 # Starts a local kubernetes cluster with one of the drivers: virtualbox, parallels, vmwarefusion, hyperkit, vmware, docker, podman (experimental) (defaults to auto-detect)
 $ minikube start --driver='hyperkit'
+
+# Start a local kubernetes cluster in `debug` mode.
+$ minikube start --v=7 --alsologtostderr
+
+# Start a local kubernetes cluster and change the cluster version. (Supports any published Kubeadm build (>=1.8))
+$ minikube start --k8s-version=1.8
+
+# Start a local kubernetes cluster and choose a different container runtime (default:docker, cri-o, rkt)
+$ minikube start --container-runtime=rkt
+
+# Start a local kubernetes cluster and add configuration
+$ minikube start --extra-config=kubelet.foo.bar=baz
 ```
 
 #### minikube status
@@ -229,6 +255,7 @@ $ ps -ax | grep hyperkit
 ```
 
 ## Resources
+* [Minikube Documentation](https://minikube.sigs.k8s.io/docs/)
 * [Minikube GitHub Repository](https://github.com/kubernetes/minikube)
 * [Youtube - Minikube Intro](https://www.youtube.com/watch?v=4x0CZmF_U5o)
 * [A Cloud Guru - Minikube in the cloud on Ubuntu](https://acloudguru.com/course/minikube-in-the-cloud-on-ubuntu)
