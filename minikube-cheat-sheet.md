@@ -11,8 +11,8 @@ minikube quickly sets up a local Kubernetes cluster on macOS, Linux, and Windows
 
 ### Minikube Command Overview
 **Basic Commands:**
-* `minikube start` - Starts a local Kubernetes cluster ([Reference](https://minikube.sigs.k8s.io/docs/commands/start/))
-* `minikube status` - Gets the status of a local Kubernetes cluster ([Reference](https://minikube.sigs.k8s.io/docs/commands/status/))
+* [`minikube start`](#minikube-start) - Starts a local Kubernetes cluster ([Reference](https://minikube.sigs.k8s.io/docs/commands/start/))
+* [`minikube status`](#minikube-status) - Gets the status of a local Kubernetes cluster ([Reference](https://minikube.sigs.k8s.io/docs/commands/status/))
 * `minikube stop` - Stops a running local Kubernetes cluster ([Reference](https://minikube.sigs.k8s.io/docs/commands/stop/))
 * [`minikube delete`](#minikube-delete) - Deletes a local Kubernetes cluster ([Reference](https://minikube.sigs.k8s.io/docs/commands/delete/))
 * `minikube dashboard` - Access the Kubernetes dashboard running within the minikube cluster ([Reference](https://minikube.sigs.k8s.io/docs/commands/dashboard/))
@@ -115,7 +115,12 @@ $ minikube start
 $ minikube start --profile <name>
 
 $  minikube start --vm-driver=hyperkit
+```
 
+#### minikube status
+```shell
+# Gets the status of a local Kubernetes cluster.
+$ minikube status
 ```
 
 #### minikube update-check
