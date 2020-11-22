@@ -31,7 +31,7 @@ minikube quickly sets up a local Kubernetes cluster on macOS, Linux, and Windows
 * `minikube update-context` - Update kubeconfig in case of an IP or port change ([Reference](https://minikube.sigs.k8s.io/docs/commands/update-context/))
 
 **Networking and Connectivity Commands:**
-* `minikube service` - Returns a URL to connect to a service ([Reference](https://minikube.sigs.k8s.io/docs/commands/service/))
+* [`minikube service`](#minikube-service) - Returns a URL to connect to a service ([Reference](https://minikube.sigs.k8s.io/docs/commands/service/))
 * `minikube tunnel` - Connect to LoadBalancer services ([Reference](https://minikube.sigs.k8s.io/docs/commands/tunnel/))
 
 **Advanced Commands:**
@@ -43,7 +43,7 @@ minikube quickly sets up a local Kubernetes cluster on macOS, Linux, and Windows
 **Troubleshooting Commands:**
 * `minikube ssh-key` - Retrieve the ssh identity key path of the specified cluster ([Reference](https://minikube.sigs.k8s.io/docs/commands/ssh-key/))
 * [`minikube ip`](#minikube-ip) - Retrieves the IP address of the running cluster ([Reference](https://minikube.sigs.k8s.io/docs/commands/ip/))
-* `minikube logs` - Returns logs to debug a local Kubernetes cluster ([Reference](https://minikube.sigs.k8s.io/docs/commands/logs/))
+* [`minikube logs`](#minikube-logs) - Returns logs to debug a local Kubernetes cluster ([Reference](https://minikube.sigs.k8s.io/docs/commands/logs/))
 * [`minikube update-check`](#minikube-update-check) - Print current and latest version number ([Reference](https://minikube.sigs.k8s.io/docs/commands/update-check/))
 * [`minikube version`](#minikube-version) - Print the version of minikube ([Reference](https://minikube.sigs.k8s.io/docs/commands/version/))
 
