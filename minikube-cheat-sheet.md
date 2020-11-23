@@ -185,6 +185,7 @@ $ minikube start --v=7 --alsologtostderr
 
 # Start a local kubernetes cluster and change the cluster version. (Supports any published Kubeadm build (>=1.8))
 $ minikube start --kubernetes-version=v1.16.1
+$ minikube start --kubernetes-version=latest
 
 # Start a local kubernetes cluster and choose a different container runtime (default:docker, cri-o, rkt)
 $ minikube start --container-runtime=rkt
@@ -232,33 +233,67 @@ $ minikube version --output='json'
 ## Minikube Tutorials
 ### Minikube Basic Startup
 
+#### Deploy an application on Minikube and expose it via a NodePort
+```shell
+$ minikube start
+$ minikube status
+$ ps -Af | grep hyperkit
+$ kubectl get pods --all-namespaces
+```
+
+```shell
+$ kubectl create deployment my-first-minikube --image=k8s.gcr.io/echoserver:1.4
+$ kubectl get deployment 
+$ kubectl edit deployment my-first-minikube
+
+$ kubectl expose deployment my-first-minikube --type=NodePort --port=8080
+$ kubectl edit svc my-first-minikube
+$ kubectl get svc
+
+# The easiest way to access this service is to let minikube launch a web browser for you:
+$ minikube service my-first-minikube
+# Alternatively, use kubectl to forward the port. Your application is now available at http://localhost:7080/
+$ kubectl port-forward service/my-first-minikube 7080:8080
+
+$ minikube dashboard
+```
+
+```shell
+$ kubectl delete svc my-first-minikube
+$ kubectl delete deployment my-first-minikube
+$ minikube stop
+```
+
+#### Deploy an application on Minikube and expose it via a LoadBalancer
 
 ```shell
 $ minikube start
 $ minikube status
 $ ps -Af | grep hyperkit
-$ kubectl get po -A
 $ kubectl get pods --all-namespaces
+```
 
-// Create a deployment
+```shell
 $ kubectl create deployment my-first-minikube --image=k8s.gcr.io/echoserver:1.4
 $ kubectl get deployment 
 $ kubectl edit deployment my-first-minikube
+
 $ kubectl expose deployment my-first-minikube --type=LoadBalancer --port=8080
 $ kubectl edit svc my-first-minikube
 $ kubectl get svc
 
+$ minikube dashboard
+
 $ minikube ip
 $ curl <ip>:<port>
+```
 
-// Remove deployment
+```shell
 $ kubectl delete svc my-first-minikube
 $ kubectl delete deployment my-first-minikube
 $ minikube stop
-$ minikube delete
-$ ps -Af | grep hyperkit
-$ ps -ax | grep hyperkit
 ```
+
 
 ## Resources
 * [Minikube Documentation](https://minikube.sigs.k8s.io/docs/)
