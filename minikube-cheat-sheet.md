@@ -45,8 +45,8 @@ The following links contain guides on how to install minikube on your machine:
 * [`minikube cache`](#minikube-cache ) - Add, delete, or push a local image into minikube ([Reference](https://minikube.sigs.k8s.io/docs/commands/cache/))
 
 **Configuration and Management Commands:**
-* `minikube addons` - Enable or disable a minikube addon ([Reference](https://minikube.sigs.k8s.io/docs/commands/addons/))
-* `minikube config` - Modify persistent configuration values ([Reference](https://minikube.sigs.k8s.io/docs/commands/config/))
+* [`minikube addons`](#minikube-addons) - Enable or disable a minikube addon ([Reference](https://minikube.sigs.k8s.io/docs/commands/addons/))
+* [`minikube config`](#minikube-config) - Modify persistent configuration values ([Reference](https://minikube.sigs.k8s.io/docs/commands/config/))
 * `minikube profile` - Get or list the current profiles (clusters) ([Reference](https://minikube.sigs.k8s.io/docs/commands/profile/))
 * `minikube update-context` - Update kubeconfig in case of an IP or port change ([Reference](https://minikube.sigs.k8s.io/docs/commands/update-context/))
 
@@ -110,6 +110,12 @@ $ minikube cache reload nginx:latest
 
 # Delete the latest vesrion of the nginx image from the local cache.
 $ minikube cache delete nginx:latest
+```
+
+#### minikube config
+```shell
+# Increase the default memory limit by setting the memory field to 16GB in config.json file.
+$ minikube config set memory 16384
 ```
 
 #### minikube dashboard
@@ -178,7 +184,7 @@ $ minikube start --driver='hyperkit'
 $ minikube start --v=7 --alsologtostderr
 
 # Start a local kubernetes cluster and change the cluster version. (Supports any published Kubeadm build (>=1.8))
-$ minikube start --k8s-version=1.8
+$ minikube start --kubernetes-version=v1.16.1
 
 # Start a local kubernetes cluster and choose a different container runtime (default:docker, cri-o, rkt)
 $ minikube start --container-runtime=rkt
