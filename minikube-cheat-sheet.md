@@ -57,7 +57,7 @@ The following links contain guides on how to install minikube on your machine:
 **Advanced Commands:**
 * `minikube mount` - Mounts the specified directory into minikube ([Reference](https://minikube.sigs.k8s.io/docs/commands/mount/))
 * `minikube ssh` - Log into the minikube environment (for debugging) ([Reference](https://minikube.sigs.k8s.io/docs/commands/ssh/))
-* `minikube kubectl` - Run a kubectl binary matching the cluster version ([Reference](https://minikube.sigs.k8s.io/docs/commands/kubectl/))
+* [`minikube kubectl`](#minikube-kubectl) - Run a kubectl binary matching the cluster version ([Reference](https://minikube.sigs.k8s.io/docs/commands/kubectl/))
 * `minikube node` - Add, remove, or list additional nodes ([Reference](https://minikube.sigs.k8s.io/docs/commands/node/))
 
 **Troubleshooting Commands:**
@@ -143,6 +143,22 @@ $ minikube delete --purge
 ```shell
 # Retrieves the IP address of the running cluster, and writes it to STDOUT.
 $ minikube ip
+```
+
+#### minikube kubectl
+Use kubectl inside minikube
+```shell
+# Retrieve all the pods
+$ minikube kubectl -- get pods
+
+# Creating a deployment inside kubernetes cluster
+$ minikube kubectl  -- create deployment hello-minikube --image=k8s.gcr.io/echoserver:1.4
+
+# Exposing the deployment with a NodePort service
+$ minikube kubectl -- expose deployment hello-minikube --type=NodePort --port=8080
+
+# Display help
+$ minikube kubectl -- --help
 ```
 
 #### minikube logs
