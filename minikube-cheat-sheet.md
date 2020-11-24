@@ -5,13 +5,19 @@
 />
 
 # Minikube 
-minikube quickly sets up a local Kubernetes cluster on macOS, Linux, and Windows. A production kubernetes kluster setup consists of multiple master and worker nodes on separate virtual or physical machines. Minikube allows you to run a single-node kubernetes cluster on your machine. Both the master and worker processes are running on the single node. The docker runtime environment is pre-installed in the node.
+Minikube creates a local Kubernetes cluster on macOS, Linux, and Windows. A production Kubernetes cluster setup consists of at least two master nodes and multiple worker nodes on separate virtual or physical machines. Minikube allows you to run a single-node Kubernetes cluster on your development machine. Both the master and worker processes are running on a single node. The docker runtime environment is pre-installed in the node.
 
-Minikube support kubernetes features that makes sense locally like, DNS, NodePorts, PersistentVolumes, Ingress, ConfigMaps & Secrets, Dashboards, Container runtime (docker, rkt, CRI-O), enabling CNI (Container Network Interface) and loadbalancer.
+Minikube supports Kubernetes features that makes sense locally like, DNS, NodePorts, PersistentVolumes, Ingress, ConfigMaps & Secrets, Dashboards, Container runtime (Docker, rkt, CRI-O), enabling CNI (Container Network Interface) and load balancer.
 
-Minikube has a number of custom addons that can easily be enabled vi the command line. The addons are for example, dashboard, ingress, heapster, prometheus, registry-creds, etc..
+Minikube has several custom add-ons that can easily be enabled via the command line. The add-ons are, for example, dashboard, ingress, heapster, prometheus, registry-creds, etc... The minikube deployment files in `~/.minikube/addons/deployment.yaml` can be used to run custom Kubernetes resources every time minikube starts.
 
-Minikube is configurable via the config.json file, environment variables and flags. The $MINIKUBE_HOME resolves to the `~/.minikube` folder and contains all the minikube configuration and cached minikube artifacts. Configuration files can be mounted on the minikube node via `~/.minikube/files/home/config.yaml -> /home/config.yaml`. The minikube deployment files in `~/.minikube/addons/deployment.yaml` can be used to run custom kubernetes resources everytime minikube starts.
+Minikube is configurable via the config.json file, environment variables and flags. The $MINIKUBE_HOME resolves to the `~/.minikube` folder and contains all the minikube configuration and cached minikube artefacts. 
+
+* Explicit Config: ~/.minikube/config/config.json (Via minikube config set commands)
+* Default Config: ~/.minikube/profiles/minikube/config.json
+* Applied Config: ~/.minikube/machines/minikube/config.json
+
+Configuration files can be mounted on the minikube node via `~/.minikube/files/home/config.yaml -> /home/config.yaml`. 
 
 This cheatsheet is based on minikube version: **v1.15.1**
 
@@ -114,8 +120,14 @@ $ minikube cache delete nginx:latest
 
 #### minikube config
 ```shell
-# Increase the default memory limit by setting the memory field to 16GB in config.json file.
+# Set the memory field to 16GB in the minikube config file (~/.minikube/config/config.json)
 $ minikube config set memory 16384
+
+# Display values currently set in the minikube config file (~/.minikube/config/config.json)
+$ minikube config view
+
+# Unsets the memory field in the minikube config file (~/.minikube/config/config.json)
+$ minikube config unset memory
 ```
 
 #### minikube dashboard
@@ -200,8 +212,7 @@ $ minikube start --driver='hyperkit'
 $ minikube start --v=7 --alsologtostderr
 
 # Start a local kubernetes cluster and change the cluster version. (Supports any published Kubeadm build (>=1.8))
-$ minikube start --kubernetes-version=v1.16.1
-$ minikube start --kubernetes-version=latest
+$ minikube start --kubernetes-version 1.16.1
 
 # Start a local kubernetes cluster and choose a different container runtime (default:docker, cri-o, rkt)
 $ minikube start --container-runtime=rkt
@@ -310,6 +321,27 @@ $ kubectl delete deployment my-first-minikube
 $ minikube stop
 ```
 
+### Minikube Configuration
+To Be Defined
+
+### Minikube Local Storage and Volumes
+To Be Defined
+
+### Minikube Persistent Storage
+To Be Defined
+
+### Minikube Logging & Debugging
+
+```shell
+$ minikube start --v=0
+$ minikube start --v=7 --alsologtostderr
+
+$ minikube logs
+$ minikube logs --problems
+
+$ kubectl get po -A
+$ kubectl describe pod <pod name> -n <namespace>
+```
 
 ## Resources
 * [Minikube Documentation](https://minikube.sigs.k8s.io/docs/)
