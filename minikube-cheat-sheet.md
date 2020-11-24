@@ -5,7 +5,6 @@
 />
 
 # Minikube 
-## Overview
 Minikube creates a local Kubernetes cluster on macOS, Linux, and Windows. A production Kubernetes cluster setup consists of at least two master nodes and multiple worker nodes on separate virtual or physical machines. Minikube allows you to run a single-node Kubernetes cluster on your development machine. Both the master and worker processes are running on a single node. The docker runtime environment is pre-installed in the node.
 
 Minikube supports Kubernetes features that makes sense locally like, DNS, NodePorts, PersistentVolumes, Ingress, ConfigMaps & Secrets, Dashboards, Container runtime (Docker, rkt, CRI-O), enabling CNI (Container Network Interface) and load balancer.
@@ -14,16 +13,15 @@ Minikube has several custom add-ons that can easily be enabled via the command l
 
 Minikube is configurable via the config.json file, environment variables and flags. The $MINIKUBE_HOME resolves to the `~/.minikube` folder and contains all the minikube configuration and cached minikube artefacts. 
 
-* Explicit Config: ~/.minikube/config/config.json (Via minikube config set commands)
-* Default Config: ~/.minikube/profiles/minikube/config.json
-* Applied Config: ~/.minikube/machines/minikube/config.json
+* Explicit Config: `~/.minikube/config/config.json (Via minikube config set commands)`
+* Default Config: `~/.minikube/profiles/minikube/config.json`
+* Applied Config: `~/.minikube/machines/minikube/config.json`
 
 Configuration files can be mounted on the minikube node via `~/.minikube/files/home/config.yaml -> /home/config.yaml`. 
 
 This cheatsheet is based on minikube version: **v1.15.1**
 
 ## Table of Contents
-* [Overview](#overview)
 * [Installation](#installation)
 * [Minikube Commands](#minikube-commands)
 * [Minikube Tutorials](#minikube-tutorials)
