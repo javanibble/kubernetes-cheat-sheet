@@ -9,7 +9,7 @@ Minikube creates a local Kubernetes cluster on macOS, Linux, and Windows. A prod
 
 Minikube supports Kubernetes features that makes sense locally like, DNS, NodePorts, PersistentVolumes, Ingress, ConfigMaps & Secrets, Dashboards, Container runtime (Docker, rkt, CRI-O), enabling CNI (Container Network Interface) and load balancer.
 
-Minikube has several custom add-ons that can easily be enabled via the command line. The add-ons are, for example, dashboard, ingress, heapster, prometheus, registry-creds, etc... The minikube deployment files in `~/.minikube/addons/deployment.yaml` can be used to run custom Kubernetes resources every time minikube starts.
+Minikube has several custom add-ons that can easily be enabled via the command line. The add-ons are dashboard, ingress, heapster, prometheus, registry-creds, and many more. The minikube deployment files in `~/.minikube/addons/deployment.yaml` can be used to run custom Kubernetes resources every time minikube starts.
 
 Minikube is configurable via the config.json file, environment variables and flags. The $MINIKUBE_HOME resolves to the `~/.minikube` folder and contains all the minikube configuration and cached minikube artefacts. 
 
@@ -334,6 +334,7 @@ To Be Defined
 
 ```shell
 $ minikube start --v=0
+
 $ minikube start --v=7 --alsologtostderr
 
 $ minikube logs

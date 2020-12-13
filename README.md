@@ -71,6 +71,9 @@ Secrets stores sensitive information, such as passwords, OAuth tokens, and ssh k
 * secrets can be attached as files or environment variables
 * use add-on encryption provides for locking your data
 
+#### Service
+An abstract way to expose an application running on a set of Pods as a network service. The set of Pods targeted by a Service is (usually) determined by a selector. If more Pods are added or removed, the set of Pods matching the selector will change. The Service makes sure that network traffic can be directed to the current set of Pods for the workload.
+
 ## Online Courses
 
 ### A Cloud Guru
@@ -81,6 +84,7 @@ Secrets stores sensitive information, such as passwords, OAuth tokens, and ssh k
 
 ## Youtube
 * [Microsoft Azure - Kubernetes Basics Playlist](https://www.youtube.com/playlist?list=PLLasX02E8BPCrIhFrc_ZiINhbRkYMKdPT)
+* [Complete Kubernetes Tutorial for Beginners](https://www.youtube.com/playlist?list=PLy7NrYWoggjziYQIDorlXjTvvwweTYoNC)
 
 ## Resources
 * [Microsoft Kubernetes Learning Path - 50 Days from zero to hero with Kubernetes](https://azure.microsoft.com/mediahandler/files/resourcefiles/kubernetes-learning-path/Kubernetes%20Learning%20Path%20version%201.0.pdf)
